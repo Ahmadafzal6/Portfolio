@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ahmad | Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --dark-bg: #0f172a;
+            --light-text: #f1f5f9;
+            --card-bg: #1e293b;
+            --nav-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Enable Scroll Snapping */
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--nav-height);
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: 0.4s;
+            background: rgba(15, 23, 42, 0.95); /* Solid background for better visibility over image */
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION (Full Height Hero) --- */
+      #hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-snap-align: start;
+}
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Your Image URL */
+            background-image: url('https://z-cdn-media.chatglm.cn/files/fc5b91d1-195d-46c3-8294-b5daa5b411a2.jpeg?auth_key=1872280461-ececa7fd48bc41a5ad18ac8cd4c67b76-0-7d2fc0cb14f6aff1f30cdc728db13365');
+            background-size: 99%;
+            background-position: center center; /* Centers the image */
+            background-repeat: no-repeat;
+            z-index: 1s;
+        }
+
+       .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(15, 23, 42, 0.92) 0%,
+        rgba(15, 23, 42, 0.75) 40%,
+        rgba(15, 23, 42, 0.25) 70%,
+        rgba(15, 23, 42, 0.1) 100%
+    );
+}
+
+        .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin-left: -3%;
+    text-align: left;
+    animation: slideFromLeft 1.2s ease-out forwards;
+    opacity: 0;
+}
+
+        .hero-content h1 {
+            font-size: 3.5rem; /* Restored to larger size for full height */
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem; /* Restored to larger size */
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 25px; /* Restored margin */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .btn-hero {
+            display: inline-block;
+            padding: 15px 40px; /* Restored padding for full height */
+            background: var(--primary);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .btn-hero:hover {
+            background: transparent;
+            border-color: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS STYLING --- */
+        section {
+            padding: 80px 10%;
+            position: relative;
+            z-index: 2;
+            background-color: var(--dark-bg);
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto 0;
+        }
+
+        /* --- PROJECTS GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: var(--primary);
+        }
+
+        .project-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+
+        .img-container {
+            overflow: hidden;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-info p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tech-stack span {
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* --- SKILLS SECTION --- */
+        #skills {
+            background-color: #0c1222; 
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .skill-box {
+            background: var(--card-bg);
+            padding: 30px 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            min-width: 150px;
+        }
+
+        .skill-box:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .skill-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .skill-box h4 {
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        /* --- ABOUT & EDUCATION --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .timeline {
+            border-left: 2px solid rgba(59, 130, 246, 0.3);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .timeline-item span {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* --- CONTACT --- */
+        #contact {
+            text-align: center;
+            background: linear-gradient(to top, #020617, var(--dark-bg));
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--card-bg);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-decoration: none;
+            color: var(--light-text);
+            transition: 0.3s;
+        }
+
+        .contact-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                gap: 20px;
+                transform: translateY(-150%);
+                transition: 0.3s;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            /* Adjustments for 300px height on mobile */
+            #hero {
+                height: 350px; /* Slightly taller on mobile for text wrapping */
+            }
+            
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+            
+            .about-content { grid-template-columns: 1fr; }
+            .section-header h2 { font-size: 2rem; }
+        }
+        @keyframes slideFromLeft {
+    from {
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo"><span>Portfolio</span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="#hero">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section (300px Height) -->
+ <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>Muhammad Ahmad</h1>
+        <p>IT Undergraduate & Software Developer</p>
+        <a href="#projects" class="btn-hero">Explore My Work</a>
+    </div>
+</section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header" data-aos="fade-up">
+            <h2>My Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+            <!-- WordPress Project -->
+            <div class="project-card" data-aos="fade-up">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="WordPress" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>Business Portfolio (WordPress)</h3>
+                    <p>Designed a dynamic, responsive business website using WordPress. Implemented custom themes and optimized for SEO.</p>
+                    <div class="tech-stack">
+                        <span>WordPress</span>
+                        <span>Elementor</span>
+                        <span>Web Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HTML/CSS Project -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web Development" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>Responsive Web Layout</h3>
+                    <p>Built a modern, mobile-first landing page using pure HTML5 and CSS3, focusing on Flexbox and Grid layouts.</p>
+                    <div class="tech-stack">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C++ Project 1 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="img-container">
+                    <img src="image.jpg" alt="Car Rental System" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>Car Rental System</h3>
+                    <p>Console-based  Car Management system using OOP. Features billing logic and file handling for data storage.</p>
+                    <div class="tech-stack">
+                        <span>C++</span>
+                        <span>OOP</span>
+                        <span>File Handling</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C++ Project 2 -->
+            <div class="project-card" data-aos="fade-up">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel System" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>Hotel Management System</h3>
+                    <p>Comprehensive system using Inheritance & Polymorphism. Manages rooms, customers, and billing.</p>
+                    <div class="tech-stack">
+                        <span>C++</span>
+                        <span>Data Structures</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Python Project -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Automation" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>n8n Workflow Automation</h3>
+                    <p>Automated workflows for fetching news and tasks. Integrated APIs and Python scripts.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>n8n</span>
+                        <span>APIs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C++ Project 3 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Food System" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>Food Ordering System</h3>
+                    <p>Applied linked lists and arrays for dynamic menu management with sorting algorithms.</p>
+                    <div class="tech-stack">
+                        <span>C++</span>
+                        <span>Linked Lists</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Technical Skills</h2>
+        </div>
+
+        <div class="skills-container">
+            <div class="skill-box" data-aos="zoom-in">
+                <i class="fab fa-html5"></i>
+                <h4>HTML & CSS</h4>
+            </div>
+            <div class="skill-box" data-aos="zoom-in" data-aos-delay="50">
+                <i class="fab fa-wordpress"></i>
+                <h4>WordPress</h4>
+            </div>
+            <div class="skill-box" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fab fa-python"></i>
+                <h4>Python</h4>
+            </div>
+            <div class="skill-box" data-aos="zoom-in" data-aos-delay="150">
+                <i class="fas fa-code"></i>
+                <h4>C++</h4>
+            </div>
+            <div class="skill-box" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-robot"></i>
+                <h4>AI Automation</h4>
+            </div>
+            <div class="skill-box" data-aos="zoom-in" data-aos-delay="250">
+                <i class="fas fa-database"></i>
+                <h4>Data Structures</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Education -->
+    <section id="about">
+        <div class="section-header" data-aos="fade-up">
+            <h2>About Me</h2>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text" data-aos="fade-right">
+                <p>Motivated BS Information Technology undergraduate with hands-on experience in C++, Python, and Web Technologies. Strong foundation in Object-Oriented Programming and Data Structures.</p>
+                <p>Passionate about problem-solving, software development, and building real-world applications. Currently expanding my skills in Web Development and AI Automation workflows.</p>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="margin-bottom: 10px; color:var(--primary);">Languages</h3>
+                    <p>English (Fluent), Urdu (Native)</p>
+                </div>
+            </div>
+
+            <div class="education" data-aos="fade-left">
+                <h3 style="margin-bottom: 30px; font-size: 1.8rem; color:#fff;">Education & Certifications</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span>2024 - 2028</span>
+                        <h3>BS Information Technology</h3>
+                        <p>Bahria University Lahore</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span>Certification</span>
+                        <h3>PIAIC – Python Programming</h3>
+                        <p>Level 1 Developer</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span>Certification</span>
+                        <h3>Critical Thinking In AI Era</h3>
+                    </div>
+                    <div class="timeline-item">
+                        <span>Certification</span>
+                        <h3>Social Media Marketing</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Contact Me</h2>
+        </div>
+
+        <div class="contact-grid">
+            <a href="mailto:ahmadxaab@gmail.com" class="contact-item" data-aos="flip-left">
+                <i class="fas fa-envelope"></i>
+                <span>ahmadxaab@gmail.com</span>
+            </a>
+            <a href="tel:+923211833637" class="contact-item" data-aos="flip-left" data-aos-delay="100">
+                <i class="fas fa-phone-alt"></i>
+                <span>+92-321-1833637</span>
+            </a>
+            <a href="https://linkedin.com/in/Muhammad Ahmad" target="_blank" class="contact-item" data-aos="flip-left" data-aos-delay="200">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn Profile</span>
+            </a>
+            <div class="contact-item" data-aos="flip-left" data-aos-delay="300">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Lahore, Pakistan</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 20px; background: #020617; color: #64748b; z-index: 10;">
+        <p>Designed & Built by Muhammad Ahmad &copy; 2023</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+         AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            // Since hero is now small (300px), we want the nav background to be visible sooner
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
